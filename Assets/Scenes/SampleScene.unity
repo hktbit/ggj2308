@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1747392474}
-  m_IndirectSpecularColor: {r: 0.4122777, g: 0.4892311, b: 0.60328877, a: 1}
+  m_IndirectSpecularColor: {r: 0.41227594, g: 0.48922873, b: 0.60328513, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -220,10 +220,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efcd5e0f6ef5e8747a121f5754ba8faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSheepPrefab: {fileID: 0}
+  playerSheepPrefab: {fileID: 5203470483220755335, guid: 1b7d4c7568657324abfea2bbc38af93b, type: 3}
   playerSheepTf: {fileID: 582651629}
+  renderCamera: {fileID: 428663429}
   musicalScore:
     notes: 01000000010000000100000001000000
+  barikans:
+  - {fileID: 378070402}
+  - {fileID: 1381150676}
+  - {fileID: 323978815}
+  - {fileID: 254024261}
 --- !u!4 &107215337
 Transform:
   m_ObjectHideFlags: 0
@@ -371,8 +377,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!23 &254024259
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -621,8 +627,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!23 &323978813
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -837,8 +843,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!23 &378070400
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2402,8 +2408,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!23 &1381150674
 MeshRenderer:
   m_ObjectHideFlags: 0

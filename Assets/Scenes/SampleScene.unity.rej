@@ -1,0 +1,19 @@
+diff a/Assets/Scenes/SampleScene.unity b/Assets/Scenes/SampleScene.unity	(rejected hunks)
+@@ -436,12 +436,17 @@
+    m_PrefabAsset: {fileID: 0}
+    m_GameObject: {fileID: 254024257}
+    m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+++<<<<<<< Updated upstream
+ +  m_LocalPosition: {x: 14, y: 0, z: 0}
+ +  m_LocalScale: {x: 1, y: 1, z: 1}
+++=======
++   m_LocalPosition: {x: 14, y: -0.5, z: 0}
++   m_LocalScale: {x: 0.25, y: 1, z: 4}
+++>>>>>>> Stashed changes
+    m_ConstrainProportionsScale: 0
+ -  m_Children: []
+ +  m_Children:
+ +  - {fileID: 451721249}
+    m_Father: {fileID: 0}
+    m_RootOrder: 9
+    m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

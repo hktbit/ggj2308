@@ -54,33 +54,53 @@ public class Sheep : MonoBehaviour
             .AppendInterval(gameManager.BeatSeconds * 2f)
             .AppendCallback(() =>
             {
-                if (musicalScore.notes[0] == NoteType.Single)
+                switch (musicalScore.notes[0])
                 {
-                    Jump();
+                    case NoteType.None:
+                        break;
+                    case NoteType.Single:
+                    case NoteType.Double:
+                        Jump();
+                        break;
                 }
             })
             .AppendInterval(gameManager.BeatSeconds)
             .AppendCallback(() =>
             {
-                if (musicalScore.notes[1] == NoteType.Single)
+                switch (musicalScore.notes[1])
                 {
-                    Jump();
+                    case NoteType.None:
+                        break;
+                    case NoteType.Single:
+                    case NoteType.Double:
+                        Jump();
+                        break;
                 }
             })
             .AppendInterval(gameManager.BeatSeconds)
             .AppendCallback(() =>
             {
-                if (musicalScore.notes[2] == NoteType.Single)
+                switch (musicalScore.notes[2])
                 {
-                    Jump();
+                    case NoteType.None:
+                        break;
+                    case NoteType.Single:
+                    case NoteType.Double:
+                        Jump();
+                        break;
                 }
             })
             .AppendInterval(gameManager.BeatSeconds)
             .AppendCallback(() =>
             {
-                if (musicalScore.notes[3] == NoteType.Single)
+                switch (musicalScore.notes[3])
                 {
-                    Jump();
+                    case NoteType.None:
+                        break;
+                    case NoteType.Single:
+                    case NoteType.Double:
+                        Jump();
+                        break;
                 }
             })
             ;
@@ -135,6 +155,7 @@ public class Sheep : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("GameOver");
+        gameManager.StartGameOver();
     }
 
     void Jump()
