@@ -417,6 +417,11 @@ public class GameManager : MonoBehaviour
             successCount = 3;
         }
     }
+
+    public void Retry()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
 }
 
 [System.Serializable]
