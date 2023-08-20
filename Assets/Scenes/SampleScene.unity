@@ -364,6 +364,7 @@ MonoBehaviour:
   ouchiPrefab: {fileID: 4410144279239423467, guid: e798748b848c78547a0cf25b5a4bd686, type: 3}
   gameoverBG: {fileID: 1605322341}
   gameoverImage: {fileID: 1798105542}
+  gameoverSheep: {fileID: 6359140610835754220, guid: 9bf08716b18ca9246b01eba8408fb70d, type: 3}
   musicalScore:
     notes: 01000000010000000100000001000000
   stages:
