@@ -4,6 +4,7 @@ using UnityEngine;
 using KoitanLib;
 using DG.Tweening;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class GameManager : MonoBehaviour
     Camera renderCamera;
     [SerializeField]
     Image successImage;
+    [SerializeField]
+    TextMeshProUGUI scoreTextMesh;
+    int score = 0;
     public float Bpm { get; private set; } = 90f;
     public float BeatSeconds { get; private set; }
     public float BeatTimeScale { get; private set; } = 1f;
@@ -313,6 +317,12 @@ public class GameManager : MonoBehaviour
 
     public void Success()
     {
+        // スコア加算
+        score++;
+        scoreTextMesh.text = $"{score}";
+        scoreTextMesh.transform.DOKill();
+        scoreTextMesh.transform.localScale = Vector3.one;
+        scoreTextMesh.transform.DOPunchScale(Vector3.one * 0.1f, 0.1f);
         Debug.Log("Success");
         successImage.DOKill();
         successImage.color = Color.white;
