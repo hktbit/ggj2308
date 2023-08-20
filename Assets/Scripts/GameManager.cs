@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Sheep playerSheepPrefab;
     [SerializeField]
+    Sheep senpaiSheepPrefab;
+    [SerializeField]
     Transform playerSheepTf;
     [SerializeField]
     Camera renderCamera;
@@ -128,7 +130,15 @@ public class GameManager : MonoBehaviour
 
     void InstantiateSheep(bool isTutorial)
     {
-        Sheep sheep = Instantiate(playerSheepPrefab, playerSheepTf.position, playerSheepTf.rotation);
+        Sheep sheep;
+        if (isTutorial)
+        {
+            sheep = Instantiate(senpaiSheepPrefab, playerSheepTf.position, playerSheepTf.rotation);
+        }
+        else
+        {
+            sheep = Instantiate(playerSheepPrefab, playerSheepTf.position, playerSheepTf.rotation);
+        }
         sheep.gameObject.SetActive(true);
         sheep.gameManager = this;
         sheep.musicalScore = musicalScore;

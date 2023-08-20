@@ -141,8 +141,7 @@ public class Sheep : MonoBehaviour
         {
             if (Music.IsJustChangedAt(timings[0]))
             {
-                AutoJump(0);
-                Debug.Log("3,0,0");
+                AutoJump(0);         
             }
             if (Music.IsJustChangedAt(timings[1]))
             {
@@ -161,18 +160,7 @@ public class Sheep : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (isGround)
-                {
-                    Jump();
-                }
-                else
-                {
-                    if (airJumpCount > 0)
-                    {
-                        airJumpCount--;
-                        Jump();
-                    }
-                }
+                Jump();
             }
         }
         /*
@@ -189,8 +177,16 @@ public class Sheep : MonoBehaviour
 
     void Jump()
     {
-        if (isGround)
+        if (!isGround)
         {
+            if (airJumpCount > 0)
+            {
+                airJumpCount--;
+            }
+            else
+            {
+                return;
+            }
         }
         Jumped.Invoke();
         isGround = false;

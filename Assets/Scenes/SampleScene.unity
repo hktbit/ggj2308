@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSheepPrefab: {fileID: 5203470483220755335, guid: 1b7d4c7568657324abfea2bbc38af93b, type: 3}
+  senpaiSheepPrefab: {fileID: 7021686459939983009, guid: d79201247005641469002cf75c4aa5ea, type: 3}
   playerSheepTf: {fileID: 582651629}
   renderCamera: {fileID: 428663429}
   musicalScore:
