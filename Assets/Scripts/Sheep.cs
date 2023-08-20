@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Sheep : MonoBehaviour
 {
+    public event System.Action Jumped = () => { };
+
     public GameManager gameManager;
     bool isJumping = false;
     TrailRenderer trailRenderer;
@@ -184,6 +186,10 @@ public class Sheep : MonoBehaviour
 
     void Jump()
     {
+        if (isGround)
+        {
+            Jumped.Invoke();
+        }
         isGround = false;
         velocity = jumpSpeed;
         /*

@@ -131,6 +131,13 @@ public class GameManager : MonoBehaviour
         sheep.gameManager = this;
         sheep.musicalScore = musicalScore;
         sheep.isTutorial = isTutorial;
+
+        sheep.Jumped += OnJumped;
+    }
+
+    void OnJumped()
+    {
+        se.Play();
     }
 
     public void StartGameOver()
@@ -154,9 +161,12 @@ public class GameManager : MonoBehaviour
     };
 
     [SerializeField]
+    AudioSource se;
+
+    [SerializeField]
     UnityEngine.UI.Text playButtonText;
 
-    public void Play()
+    void Play()
     {
         this.isPlay = true;
         this.playButtonText.text = "Playing..";
