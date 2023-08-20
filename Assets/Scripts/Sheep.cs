@@ -43,7 +43,10 @@ public class Sheep : MonoBehaviour
             {
                 // ?j??
                 transform.DOKill();
-                Destroy(gameObject);
+                if (!gameManager.IsGameOver)
+                {
+                    Destroy(gameObject);
+                }
             })
             ;
         /*

@@ -26,6 +26,14 @@ public class GameManager : MonoBehaviour
     Transform textParent;
     int score = 0;
     int successCount;
+    [SerializeField]
+    GameObject ouchiPrefab;
+    [SerializeField]
+    Image gameoverBG, gameoverImage;
+    [SerializeField]
+    GameObject gameoverSheep;
+    Sheep currentSheep;
+
     public float Bpm { get; private set; } = 90f;
     public float BeatSeconds { get; private set; }
     public float BeatTimeScale { get; private set; } = 1f;
@@ -150,6 +158,7 @@ public class GameManager : MonoBehaviour
         else
         {
             sheep = Instantiate(playerSheepPrefab, playerSheepTf.position, playerSheepTf.rotation);
+            currentSheep = sheep;
         }
         sheep.gameObject.SetActive(true);
         sheep.gameManager = this;
@@ -166,7 +175,20 @@ public class GameManager : MonoBehaviour
 
     public void StartGameOver()
     {
+        if (IsGameOver)
+        {
+            return;
+        }
+        IsGameOver = true;
         renderCamera.transform.DOPunchPosition(Random.onUnitSphere * 0.25f, 0.25f);
+        GameObject tObj = Instantiate(ouchiPrefab, textParent);
+        tObj.transform.position = textParent.position;
+        gameoverImage.transform.localScale = Vector3.zero;
+        gameoverImage.transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBack);
+        gameoverImage.gameObject.SetActive(true);
+        gameoverBG.color = new Color(1, 1, 1, 0);
+        gameoverBG.DOFade(0.5f, 1f);
+        gameoverBG.gameObject.SetActive(true);
     }
 
     bool isPlay;
@@ -217,6 +239,11 @@ public class GameManager : MonoBehaviour
         }
 
         if (!isInit)
+        {
+            return;
+        }
+
+        if (IsGameOver)
         {
             return;
         }
