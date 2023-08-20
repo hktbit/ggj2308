@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     Transform playerSheepTf;
     [SerializeField]
     Camera renderCamera;
-    public float Bpm { get; private set; } = 120f;
+    public float Bpm { get; private set; } = 90f;
     public float BeatSeconds { get; private set; }
     public bool IsGameOver { get; private set; }
     int cnt;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StartLoop();
+        //StartLoop();
     }
 
     // Update is called once per frame
@@ -37,6 +37,11 @@ public class GameManager : MonoBehaviour
     {
         KoitanDebug.Display($"デバッグ表示です\n");
         KoitanDebug.Display($"Time.time = {Time.time}\n");
+
+        if (this.isPlay)
+        {
+            this.OnTiming();
+        }
     }
 
     void StartLoop()
@@ -129,6 +134,152 @@ public class GameManager : MonoBehaviour
     public void StartGameOver()
     {
         renderCamera.transform.DOPunchPosition(Random.onUnitSphere * 0.25f, 0.25f);
+    }
+
+    bool isPlay;
+    bool isInit;
+
+    Timing[] timings = new Timing[] {
+        new Timing(0, 0, 0),
+        new Timing(0, 1, 0),
+        new Timing(0, 2, 0),
+        new Timing(0, 3, 0),
+        new Timing(1, 0, 0),
+        new Timing(1, 1, 0),
+        new Timing(1, 2, 0),
+        new Timing(1, 3, 0),
+        new Timing(2, 0, 0),
+        new Timing(3, 0, 0),
+    };
+
+    [SerializeField]
+    UnityEngine.UI.Text playButtonText;
+
+    public void Play()
+    {
+        this.isPlay = true;
+        this.playButtonText.text = "Playing..";
+    }
+
+    void OnTiming()
+    {
+        if (Music.IsJustChangedAt(timings[0]))
+        {
+            isInit = true;
+            GenerateStage();
+            ResetBlock(0);
+            return;
+        }
+
+        if (!isInit)
+        {
+            return;
+        }
+
+        if (Music.IsJustChangedAt(timings[1]))
+        {
+            ResetBlock(1);
+        }
+        if (Music.IsJustChangedAt(timings[2]))
+        {
+            ResetBlock(2);
+        }
+        if (Music.IsJustChangedAt(timings[3]))
+        {
+            ResetBlock(3);
+        }
+
+        if (Music.IsJustChangedAt(timings[4]))
+        {
+            SetBlock(0);
+        }
+
+        if (Music.IsJustChangedAt(timings[5]))
+        {
+            SetBlock(1);
+        }
+
+        if (Music.IsJustChangedAt(timings[6]))
+        {
+            SetBlock(2);
+        }
+
+        if (Music.IsJustChangedAt(timings[7]))
+        {
+            SetBlock(3);
+        }
+
+        if (Music.IsJustChangedAt(timings[8]))
+        {
+            InstantiateSheep(isTutorial: true);
+        }
+
+        if (Music.IsJustChangedAt(timings[9]))
+        {
+            InstantiateSheep(isTutorial: false);
+        }
+    }
+
+    void GenerateStage()
+    {
+        NoteType preNote = NoteType.None;
+        for (int i = 0; i < 4; i++)
+        {
+            // 前が高い壁の場合はなし
+            if (preNote == NoteType.Double)
+            {
+                musicalScore.notes[i] = NoteType.None;
+                preNote = NoteType.None;
+                continue;
+            }
+
+            NoteType note;
+            float r = Random.Range(0f, 1f);
+            if (r < 1f / 3f)
+            {
+                note = NoteType.None;
+            }
+            else if (r < 2f / 3f)
+            {
+                note = NoteType.Single;
+            }
+            else
+            {
+                note = NoteType.Double;
+            }
+            musicalScore.notes[i] = note;
+            preNote = note;
+        }
+    }
+
+    void ResetBlock(int i)
+    {
+        Vector3 pos = barikans[i].position;
+        pos.y = 3f;
+        barikans[i].position = pos;
+    }
+
+    void SetBlock(int i)
+    {
+        Vector3 scale = barikans[i].localScale;
+        Vector3 pos = barikans[i].position;
+        switch (musicalScore.notes[i])
+        {
+            case NoteType.None:
+                scale.y = 1f;
+                pos.y = -1f;
+                break;
+            case NoteType.Single:
+                scale.y = 1f;
+                pos.y = 0f;
+                break;
+            case NoteType.Double:
+                scale.y = 1f;
+                pos.y = 1f;
+                break;
+        }
+        //barikans[i].localScale = scale;
+        barikans[i].position = pos;
     }
 }
 
