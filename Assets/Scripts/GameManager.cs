@@ -180,15 +180,25 @@ public class GameManager : MonoBehaviour
             return;
         }
         IsGameOver = true;
-        renderCamera.transform.DOPunchPosition(Random.onUnitSphere * 0.25f, 0.25f);
+        currentSheep.gameObject.SetActive(false);
+        GameObject gs = Instantiate(gameoverSheep);
+        gs.transform.position = currentSheep.transform.position;
+        gs.transform.rotation = currentSheep.transform.rotation;
         GameObject tObj = Instantiate(ouchiPrefab, textParent);
         tObj.transform.position = textParent.position;
-        gameoverImage.transform.localScale = Vector3.zero;
-        gameoverImage.transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBack);
-        gameoverImage.gameObject.SetActive(true);
-        gameoverBG.color = new Color(1, 1, 1, 0);
-        gameoverBG.DOFade(0.5f, 1f);
-        gameoverBG.gameObject.SetActive(true);
+        Sequence seq = DOTween.Sequence()
+            .AppendInterval(1f)
+            .AppendCallback(() =>
+            {
+                renderCamera.transform.DOPunchPosition(Random.onUnitSphere * 0.25f, 0.25f);
+                gameoverImage.transform.localScale = Vector3.zero;
+                gameoverImage.transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBack);
+                gameoverImage.gameObject.SetActive(true);
+                gameoverBG.color = new Color(1, 1, 1, 0);
+                gameoverBG.DOFade(0.5f, 1f);
+                gameoverBG.gameObject.SetActive(true);
+            })
+            ;
     }
 
     bool isPlay;
