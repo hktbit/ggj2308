@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
 
     void OnJumped()
     {
-        ses[0].Play();
+        ses[successCount >= 3 ? 1 : 0].Play();
     }
 
     public void StartGameOver()
