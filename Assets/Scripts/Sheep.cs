@@ -23,6 +23,13 @@ public class Sheep : MonoBehaviour
     int airJumpCount = 1;
     int airJumpCountMax = 1;
 
+    Timing[] timings = new Timing[] {
+        new Timing(2, 0, 0),
+        new Timing(2, 1, 0),
+        new Timing(2, 2, 0),
+        new Timing(2, 3, 0),
+    };
+
     void Start()
     {
         scaleSeq = DOTween.Sequence()
@@ -47,6 +54,7 @@ public class Sheep : MonoBehaviour
                 Destroy(gameObject);
             })
             ;
+        /*
         if (isTutorial)
         {
             // ジャンプ
@@ -104,16 +112,16 @@ public class Sheep : MonoBehaviour
                 }
             })
             ;
-
         }
+        */
     }
 
     void Update()
     {
         // 座標計算
         position = transform.position;
-        velocity += acc * Time.deltaTime;
-        position += velocity * Time.deltaTime;
+        velocity += acc * Time.deltaTime * gameManager.BeatTimeScale;
+        position += velocity * Time.deltaTime * gameManager.BeatTimeScale;
         // 地面に着地
         if (position.y < 0)
         {
@@ -126,7 +134,23 @@ public class Sheep : MonoBehaviour
         //transform.position += Vector3.up * 1 * Time.deltaTime;
         if (isTutorial)
         {
-
+            if (Music.IsJustChangedAt(timings[0]))
+            {
+                AutoJump(0);
+                Debug.Log("3,0,0");
+            }
+            if (Music.IsJustChangedAt(timings[1]))
+            {
+                AutoJump(1);
+            }
+            if (Music.IsJustChangedAt(timings[2]))
+            {
+                AutoJump(2);
+            }
+            if (Music.IsJustChangedAt(timings[3]))
+            {
+                AutoJump(3);
+            }
         }
         else
         {
@@ -176,5 +200,18 @@ public class Sheep : MonoBehaviour
                     })
                     ;
         */
+    }
+
+    void AutoJump(int index)
+    {
+        switch (musicalScore.notes[index])
+        {
+            case NoteType.None:
+                break;
+            case NoteType.Single:
+            case NoteType.Double:
+                Jump();
+                break;
+        }
     }
 }

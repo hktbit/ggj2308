@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     Camera renderCamera;
     public float Bpm { get; private set; } = 90f;
     public float BeatSeconds { get; private set; }
+    public float BeatTimeScale { get; private set; } = 1f;
     public bool IsGameOver { get; private set; }
     int cnt;
     [SerializeField]
@@ -23,8 +24,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         BeatSeconds = 60f / Bpm;
+        BeatTimeScale = Bpm / 120f;
     }
 
     private void Start()
@@ -148,8 +150,7 @@ public class GameManager : MonoBehaviour
         new Timing(1, 1, 0),
         new Timing(1, 2, 0),
         new Timing(1, 3, 0),
-        new Timing(2, 0, 0),
-        new Timing(3, 0, 0),
+        new Timing(2, 3, 0),
     };
 
     [SerializeField]
@@ -207,14 +208,10 @@ public class GameManager : MonoBehaviour
         if (Music.IsJustChangedAt(timings[7]))
         {
             SetBlock(3);
-        }
-
-        if (Music.IsJustChangedAt(timings[8]))
-        {
             InstantiateSheep(isTutorial: true);
         }
 
-        if (Music.IsJustChangedAt(timings[9]))
+        if (Music.IsJustChangedAt(timings[8]))
         {
             InstantiateSheep(isTutorial: false);
         }
@@ -256,7 +253,9 @@ public class GameManager : MonoBehaviour
     {
         Vector3 pos = barikans[i].position;
         pos.y = 3f;
-        barikans[i].position = pos;
+        //barikans[i].position = pos;
+        barikans[i].DOMove(pos, BeatSeconds / 2f);
+        barikans[i].DOPunchScale(Vector3.one * 0.1f, BeatSeconds / 2f);
     }
 
     void SetBlock(int i)
@@ -279,7 +278,9 @@ public class GameManager : MonoBehaviour
                 break;
         }
         //barikans[i].localScale = scale;
-        barikans[i].position = pos;
+        //barikans[i].position = pos;
+        barikans[i].DOMove(pos, BeatSeconds / 2f);
+        barikans[i].DOPunchScale(Vector3.one * 0.1f, BeatSeconds / 2f);
     }
 }
 
