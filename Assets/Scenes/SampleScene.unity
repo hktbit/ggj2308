@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1747392474}
-  m_IndirectSpecularColor: {r: 0.5784543, g: 0.6157293, b: 0.60872656, a: 1}
+  m_IndirectSpecularColor: {r: 0.20390339, g: 0.3530442, b: 0.47370517, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2612,6 +2612,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3910567597994257270, guid: 2b34d1f97baf24e16b3dab9bebe55478, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 82e544f06af51754198337d066aef077, type: 2}
+    - target: {fileID: 3910567597994257270, guid: 2b34d1f97baf24e16b3dab9bebe55478, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 1bb3b8c01b1216f4da226d0186901561, type: 2}
+    - target: {fileID: 3910567597994257270, guid: 2b34d1f97baf24e16b3dab9bebe55478, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4482485992973364015, guid: 2b34d1f97baf24e16b3dab9bebe55478, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -440
@@ -2730,6 +2742,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8024354921120470489, guid: f2d47a722e0184ebd97f0b73688d6913, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8793212087680728405, guid: f2d47a722e0184ebd97f0b73688d6913, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

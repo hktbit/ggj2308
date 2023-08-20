@@ -151,9 +151,8 @@ public class Sheep : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
-                //gameManager.Success();
                 Jump();
             }
         }
