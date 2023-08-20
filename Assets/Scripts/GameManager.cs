@@ -20,7 +20,12 @@ public class GameManager : MonoBehaviour
     Image successImage;
     [SerializeField]
     TextMeshProUGUI scoreTextMesh;
+    [SerializeField]
+    GameObject[] textPrefabs;
+    [SerializeField]
+    Transform textParent;
     int score = 0;
+    int successCount;
     public float Bpm { get; private set; } = 90f;
     public float BeatSeconds { get; private set; }
     public float BeatTimeScale { get; private set; } = 1f;
@@ -177,6 +182,7 @@ public class GameManager : MonoBehaviour
         new Timing(1, 2, 0),
         new Timing(1, 3, 0),
         new Timing(2, 3, 0),
+        new Timing(3, 4, 0),
     };
 
     [SerializeField]
@@ -251,7 +257,33 @@ public class GameManager : MonoBehaviour
         if (Music.IsJustChangedAt(timings[8]))
         {
             InstantiateSheep(isTutorial: false);
+            successCount = 0;
+            /*
+            Sequence seq = DOTween.Sequence()
+                .AppendInterval(BeatSeconds * 5f)
+                .AppendCallback(() =>
+                {
+                    //文字表示
+                    //判定
+                    GameObject tObj = Instantiate(textPrefabs[0], textParent);
+                    tObj.transform.position = textParent.position;
+                    //if (successCount > )
+                })
+                ;
+            */
         }
+
+        /*
+        if (Music.IsJustChangedAt(timings[9]))
+        {
+            //判定
+            GameObject tObj = Instantiate(textPrefabs[0], textParent);
+            tObj.transform.position = textParent.position;
+            successCount++;
+            //if (successCount > )
+            Debug.Log("4.4");
+        }
+        */
     }
 
     void GenerateStage()
@@ -332,11 +364,20 @@ public class GameManager : MonoBehaviour
         scoreTextMesh.transform.localScale = Vector3.one;
         scoreTextMesh.transform.DOPunchScale(Vector3.one * 0.1f, 0.1f);
         Debug.Log("Success");
+        /*
         successImage.DOKill();
         successImage.color = Color.white;
         successImage.DOFade(0f, 0.1f).SetDelay(0.2f);
         successImage.transform.localScale = Vector3.one;
         successImage.transform.DOPunchScale(Vector3.one * 0.1f, 0.1f);
+        */
+        GameObject tObj = Instantiate(textPrefabs[successCount], textParent);
+        tObj.transform.position = textParent.position;
+        successCount++;
+        if (successCount > 3)
+        {
+            successCount = 3;
+        }
     }
 }
 

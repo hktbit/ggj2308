@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1747392474}
-  m_IndirectSpecularColor: {r: 0.5784543, g: 0.6157293, b: 0.60872656, a: 1}
+  m_IndirectSpecularColor: {r: 0.57770085, g: 0.6152049, b: 0.60846514, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -353,8 +353,14 @@ MonoBehaviour:
   senpaiSheepPrefab: {fileID: 7021686459939983009, guid: d79201247005641469002cf75c4aa5ea, type: 3}
   playerSheepTf: {fileID: 582651629}
   renderCamera: {fileID: 428663429}
-  successImage: {fileID: 1638911890}
+  successImage: {fileID: 0}
   scoreTextMesh: {fileID: 3190034753631217061}
+  textPrefabs:
+  - {fileID: 4410144279239423467, guid: 2ec22af5b47ae954b9f6956f7fa9d1f7, type: 3}
+  - {fileID: 4410144279239423467, guid: 4a596326bee87ba4fa9032316d5c2714, type: 3}
+  - {fileID: 4410144279239423467, guid: 398adf0fd1aafc249a77c8d6e881b317, type: 3}
+  - {fileID: 4410144279239423467, guid: a321e5dda586c05409196e87c0b64653, type: 3}
+  textParent: {fileID: 1517895926}
   musicalScore:
     notes: 01000000010000000100000001000000
   stages:
@@ -1131,17 +1137,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8838908924703485418, guid: 928d23db950e04a8dbcf5d1719b5879d, type: 3}
   m_PrefabInstance: {fileID: 8838908926006755902}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1638911890 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1895815356518263671, guid: 2b34d1f97baf24e16b3dab9bebe55478, type: 3}
-  m_PrefabInstance: {fileID: 8476615419362989661}
+--- !u!1 &1517895925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1517895926}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1517895926
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517895925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8476615419362989662}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 400, y: 200}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!108 &1747392474 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 8838908924528596452, guid: 928d23db950e04a8dbcf5d1719b5879d, type: 3}
@@ -1684,7 +1715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8476615419245563450, guid: 2b34d1f97baf24e16b3dab9bebe55478, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8476615419346867487, guid: 2b34d1f97baf24e16b3dab9bebe55478, type: 3}
       propertyPath: m_IsActive
@@ -1692,6 +1723,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b34d1f97baf24e16b3dab9bebe55478, type: 3}
+--- !u!224 &8476615419362989662 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8476615419245563446, guid: 2b34d1f97baf24e16b3dab9bebe55478, type: 3}
+  m_PrefabInstance: {fileID: 8476615419362989661}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8793212088937499534
 PrefabInstance:
   m_ObjectHideFlags: 0
