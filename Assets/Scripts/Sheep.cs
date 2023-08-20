@@ -150,7 +150,7 @@ public class Sheep : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                gameManager.Success();
+                //gameManager.Success();
                 Jump();
             }
         }
