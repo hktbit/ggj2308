@@ -122,8 +122,11 @@ public class Sheep : MonoBehaviour
     {
         // 座標計算
         position = transform.position;
-        velocity += acc * Time.deltaTime * gameManager.BeatTimeScale;
-        position += velocity * Time.deltaTime * gameManager.BeatTimeScale;
+        // 空中ジャンプした後は2倍速
+        float jumpSpeedScale = airJumpCount == 0 ? 1.5f : 1f;
+
+        velocity += acc * Time.deltaTime * gameManager.BeatTimeScale * jumpSpeedScale;
+        position += velocity * Time.deltaTime * gameManager.BeatTimeScale * jumpSpeedScale;
         // 地面に着地
         if (position.y < 0)
         {
@@ -188,8 +191,8 @@ public class Sheep : MonoBehaviour
     {
         if (isGround)
         {
-            Jumped.Invoke();
         }
+        Jumped.Invoke();
         isGround = false;
         velocity = jumpSpeed;
         /*
@@ -215,9 +218,18 @@ public class Sheep : MonoBehaviour
             case NoteType.None:
                 break;
             case NoteType.Single:
-            case NoteType.Double:
                 Jump();
                 break;
+            case NoteType.Double:
+                StartCoroutine(AutoJumpDouble());
+                break;
         }
+    }
+
+    IEnumerator AutoJumpDouble()
+    {
+        Jump();
+        yield return new WaitForSeconds(gameManager.BeatSeconds * 0.3f);
+        Jump();
     }
 }

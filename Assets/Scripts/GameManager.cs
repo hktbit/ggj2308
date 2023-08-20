@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     MusicalScore musicalScore;
     [SerializeField]
+    MusicalScore[] stages;
+    [SerializeField]
     Transform[] barikans;
     // Start is called before the first frame update
     void Awake()
@@ -229,6 +231,7 @@ public class GameManager : MonoBehaviour
 
     void GenerateStage()
     {
+        /*
         NoteType preNote = NoteType.None;
         for (int i = 0; i < 4; i++)
         {
@@ -257,12 +260,14 @@ public class GameManager : MonoBehaviour
             musicalScore.notes[i] = note;
             preNote = note;
         }
+        */
+        musicalScore = stages[Random.Range(0, stages.Length)];
     }
 
     void ResetBlock(int i)
     {
         Vector3 pos = barikans[i].position;
-        pos.y = 3f;
+        pos.y = -1.5f;
         //barikans[i].position = pos;
         barikans[i].DOMove(pos, BeatSeconds / 2f);
         barikans[i].DOPunchScale(Vector3.one * 0.1f, BeatSeconds / 2f);
@@ -276,7 +281,7 @@ public class GameManager : MonoBehaviour
         {
             case NoteType.None:
                 scale.y = 1f;
-                pos.y = -1f;
+                pos.y = -1.5f;
                 break;
             case NoteType.Single:
                 scale.y = 1f;
