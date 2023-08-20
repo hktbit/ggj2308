@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using KoitanLib;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
     Transform playerSheepTf;
     [SerializeField]
     Camera renderCamera;
+    [SerializeField]
+    Image successImage;
     public float Bpm { get; private set; } = 90f;
     public float BeatSeconds { get; private set; }
     public float BeatTimeScale { get; private set; } = 1f;
@@ -306,6 +309,16 @@ public class GameManager : MonoBehaviour
         //barikans[i].position = pos;
         barikans[i].DOMove(pos, BeatSeconds / 2f);
         barikans[i].DOPunchScale(Vector3.one * 0.1f, BeatSeconds / 2f);
+    }
+
+    public void Success()
+    {
+        Debug.Log("Success");
+        successImage.DOKill();
+        successImage.color = Color.white;
+        successImage.DOFade(0f, 0.1f).SetDelay(0.2f);
+        successImage.transform.localScale = Vector3.one;
+        successImage.transform.DOPunchScale(Vector3.one * 0.1f, 0.1f);
     }
 }
 

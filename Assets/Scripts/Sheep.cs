@@ -141,7 +141,7 @@ public class Sheep : MonoBehaviour
         {
             if (Music.IsJustChangedAt(timings[0]))
             {
-                AutoJump(0);         
+                AutoJump(0);
             }
             if (Music.IsJustChangedAt(timings[1]))
             {
@@ -160,6 +160,7 @@ public class Sheep : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                gameManager.Success();
                 Jump();
             }
         }
@@ -171,8 +172,15 @@ public class Sheep : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("GameOver");
-        gameManager.StartGameOver();
+        if (other.tag == "Block")
+        {
+            Debug.Log("GameOver");
+            gameManager.StartGameOver();
+        }
+        else if (other.tag == "Success")
+        {
+            gameManager.Success();
+        }
     }
 
     void Jump()
