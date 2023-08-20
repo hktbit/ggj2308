@@ -198,6 +198,11 @@ public class GameManager : MonoBehaviour
                 gameoverBG.DOFade(0.5f, 1f);
                 gameoverBG.gameObject.SetActive(true);
             })
+            .AppendInterval(1f)
+            .AppendCallback(() =>
+            {
+                naichilab.RankingLoader.Instance.SendScoreAndShowRanking(score);
+            })
             ;
     }
 

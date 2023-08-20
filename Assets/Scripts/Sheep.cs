@@ -225,7 +225,7 @@ public class Sheep : MonoBehaviour
     IEnumerator AutoJumpDouble()
     {
         Jump();
-        yield return new WaitForSeconds(gameManager.BeatSeconds * 0.3f);
+        yield return new WaitForSeconds(gameManager.BeatSeconds * 0.35f);
         Jump();
     }
 }
