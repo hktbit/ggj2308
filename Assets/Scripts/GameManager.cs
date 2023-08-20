@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
 
     void OnJumped()
     {
-        se.Play();
+        ses[0].Play();
     }
 
     public void StartGameOver()
@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
     };
 
     [SerializeField]
-    AudioSource se;
+    AudioSource[] ses;
 
     [SerializeField]
     GameObject canvas;
@@ -203,6 +203,7 @@ public class GameManager : MonoBehaviour
         this.titleCanvas.gameObject.SetActive(false);
         this.canvas.gameObject.SetActive(true);
         this.uiCanvas.gameObject.SetActive(true);
+        ses[2].Play();
     }
 
     void OnTiming()
