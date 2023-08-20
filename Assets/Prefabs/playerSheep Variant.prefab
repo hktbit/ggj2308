@@ -59,10 +59,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 24fb9e424a2e042a6b35e7d585010dd1, type: 2}
-    - target: {fileID: 4092845836742852276, guid: 1b7d4c7568657324abfea2bbc38af93b, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 2442398717253958562, guid: 1b7d4c7568657324abfea2bbc38af93b, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b58fe6a9fc4340e591ec06036d1b45b, type: 2}
     - target: {fileID: 5203470483220755335, guid: 1b7d4c7568657324abfea2bbc38af93b, type: 3}
       propertyPath: acc.y
       value: -65

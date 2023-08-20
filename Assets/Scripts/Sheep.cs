@@ -13,7 +13,6 @@ public class Sheep : MonoBehaviour
     TrailRenderer trailRenderer;
     public bool isTutorial;
     public MusicalScore musicalScore;
-    Sequence scaleSeq;
 
     Vector3 position;
     Vector3 velocity;
@@ -34,14 +33,6 @@ public class Sheep : MonoBehaviour
 
     void Start()
     {
-        scaleSeq = DOTween.Sequence()
-            .AppendCallback(() =>
-            {
-                transform.DOPunchScale(Vector3.one * 0.1f, 0.1f);
-            })
-            .AppendInterval(gameManager.BeatSeconds)
-            .SetLoops(-1, LoopType.Restart)
-            ;
         Sequence seq = DOTween.Sequence()
             .AppendCallback(() =>
             {
@@ -50,16 +41,15 @@ public class Sheep : MonoBehaviour
             .AppendInterval(gameManager.BeatSeconds * 8f)
             .AppendCallback(() =>
             {
-                // 破棄
+                // ?j??
                 transform.DOKill();
-                scaleSeq.Kill();
                 Destroy(gameObject);
             })
             ;
         /*
         if (isTutorial)
         {
-            // ジャンプ
+            // ?W?????v
             Sequence jumpSeq = DOTween.Sequence()
             .AppendInterval(gameManager.BeatSeconds * 2f)
             .AppendCallback(() =>
@@ -120,14 +110,14 @@ public class Sheep : MonoBehaviour
 
     void Update()
     {
-        // 座標計算
+        // ???W?v?Z
         position = transform.position;
-        // 空中ジャンプした後は2倍速
+        // ?????W?????v????????2?{??
         float jumpSpeedScale = airJumpCount == 0 ? 1.5f : 1f;
 
         velocity += acc * Time.deltaTime * gameManager.BeatTimeScale * jumpSpeedScale;
         position += velocity * Time.deltaTime * gameManager.BeatTimeScale * jumpSpeedScale;
-        // 地面に着地
+        // ?n???????n
         if (position.y < 0)
         {
             airJumpCount = airJumpCountMax;
@@ -165,7 +155,7 @@ public class Sheep : MonoBehaviour
             }
         }
         /*
-        KoitanDebug.Display($"デバッグ表示です\n");
+        KoitanDebug.Display($"?f?o?b?O?\??????\n");
         KoitanDebug.Display($"Time.time = {Time.time}\n");
         */
     }

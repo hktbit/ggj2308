@@ -183,12 +183,20 @@ public class GameManager : MonoBehaviour
     AudioSource se;
 
     [SerializeField]
-    UnityEngine.UI.Text playButtonText;
+    GameObject canvas;
 
-    void Play()
+    [SerializeField]
+    GameObject uiCanvas;
+
+    [SerializeField]
+    GameObject titleCanvas;
+
+    public void Play()
     {
         this.isPlay = true;
-        this.playButtonText.text = "Playing..";
+        this.titleCanvas.gameObject.SetActive(false);
+        this.canvas.gameObject.SetActive(true);
+        this.uiCanvas.gameObject.SetActive(true);
     }
 
     void OnTiming()
