@@ -241,6 +241,7 @@ public class GameManager : MonoBehaviour
         this.canvas.gameObject.SetActive(true);
         this.uiCanvas.gameObject.SetActive(true);
         ses[2].Play();
+        Music.Play("Music");
     }
 
     void OnTiming()

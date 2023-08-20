@@ -32,7 +32,7 @@ public class Sheep : MonoBehaviour
     };
 
     void Start()
-    {
+    {        
         Sequence seq = DOTween.Sequence()
             .AppendCallback(() =>
             {
@@ -43,10 +43,7 @@ public class Sheep : MonoBehaviour
             {
                 // ?j??
                 transform.DOKill();
-                if (!gameManager.IsGameOver)
-                {
-                    Destroy(gameObject);
-                }
+                Destroy(gameObject);
             })
             ;
         /*
@@ -225,7 +222,7 @@ public class Sheep : MonoBehaviour
     IEnumerator AutoJumpDouble()
     {
         Jump();
-        yield return new WaitForSeconds(gameManager.BeatSeconds * 0.35f);
+        yield return new WaitForSeconds(gameManager.BeatSeconds * 0.33f);
         Jump();
     }
 }
